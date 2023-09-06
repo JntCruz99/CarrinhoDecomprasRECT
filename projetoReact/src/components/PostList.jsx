@@ -20,16 +20,25 @@ class PostList extends Component {
     const { posts } = this.state;
 
     return (
-      <div>
-        <h1>Lista de Posts</h1>
-        <ul>
-          {posts.map(post => (
-            <li key={post.id}>
-              <h2>{post.nome}</h2>
-              <p>{post.cpf}</p>
-            </li>
-          ))}
-        </ul>
+      <div className="container">
+        <table  className="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>nome</th>
+              <th>idade</th>
+            </tr>
+          </thead>
+          <tbody>
+            {posts.map(post => (
+              <tr key={post.id}>
+                <td>{post.id}</td>
+                <td>{post.nome}</td>
+                <td>{post.cpf}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     );
   }
