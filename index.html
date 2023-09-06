@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de API</title>
+</head>
+<body>
+    <h1>Teste de API</h1>
+    <button id="fetchData">Buscar Dados da API</button>
+    <div id="result"></div>
+
+    <script>
+        const fetchDataButton = document.getElementById('fetchData');
+        const resultDiv = document.getElementById('result');
+
+        fetchDataButton.addEventListener('click', () => {
+            // Substitua a URL abaixo pela URL da sua API
+            const apiUrl = 'http://localhost:8080/clientes';
+
+            fetch(apiUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro na solicitação da API');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Exiba os dados da API na página
+                    resultDiv.innerHTML = JSON.stringify(data, null, 2);
+                })
+                .catch(error => {
+                    resultDiv.innerHTML = `Erro: ${error.message}`;
+                });
+        });
+    </script>
+</body>
+</html>
